@@ -17,6 +17,10 @@ buildGoModule (finalAttrs: {
 
   vendorHash = "sha256-6ZFEs7zWAVFTJ08UPEt3cAw8VRiEOjbtEEByI7E4UaU=";
 
+  # PDF tests render via a browser (Chromium), which the sandbox has no access
+  # to and cannot download. Skip the test suite in the build.
+  doCheck = false;
+
   ldflags = [
     "-s"
     "-w"
